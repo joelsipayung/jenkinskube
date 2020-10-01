@@ -33,10 +33,15 @@ pipeline {
       }
     }
     
-    stage('Apply Kubernetes files') {
-      kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
-    // some block
-        sh 'kubectl deploy -f myweb.yaml'
+    
+    stage('Deploy App') {
+      steps {
+        script {
+          kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
+            // some block
+            sh 'kubectl deploy -f myweb.yaml'
+          }
+        }
       }
     }
 
