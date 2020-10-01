@@ -39,7 +39,7 @@ pipeline {
         script {
           kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
             // some block
-            sh 'kubectl deploy -f myweb.yaml'
+            sh 'kubectl apply -f myweb.yaml'
           }
         }
       }
