@@ -34,7 +34,8 @@ pipeline {
     }
     
     stage('Apply Kubernetes files') {
-      withKubeConfig([credentialsId: 'mykubeconfigku', serverUrl: 'https://usw1.kubesail.com']) {
+      kubeconfig(credentialsId: 'mykubeconfig', serverUrl: 'https://usw1.kubesail.com') {
+    // some block
         sh 'kubectl deploy -f myweb.yaml'
       }
     }
